@@ -3,8 +3,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-SERPAPI_KEY = os.getenv("SERPAPI_KEY")
+
+def get_secret(key):
+    """환경변수 또는 Streamlit/HF secrets에서 값 가져오기"""
+    val = os.getenv(key)
+    if val:
+        return val
+    try:
+        import streamlit as st
+        return st.secrets.get(key)
+    except Exception:
+        return None
+
+
+OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
+SERPAPI_KEY = get_secret("SERPAPI_KEY")
 
 AIRPORT_CODES = {
     "서울": "ICN", "인천": "ICN", "김포": "GMP",
