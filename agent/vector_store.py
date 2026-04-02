@@ -4,7 +4,7 @@ import json
 import os
 import numpy as np
 from openai import OpenAI
-from langchain.tools import tool
+from langchain_core.tools import tool
 from config import OPENAI_API_KEY
 
 POLICIES_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "airline_policies.json")

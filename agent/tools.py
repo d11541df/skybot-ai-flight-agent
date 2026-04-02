@@ -3,7 +3,7 @@
 import json
 import urllib.request
 import urllib.parse
-from langchain.tools import tool
+from langchain_core.tools import tool
 from config import SERPAPI_KEY, AIRPORT_CODES, AIRLINE_NAMES
 
 
